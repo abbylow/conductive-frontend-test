@@ -1,0 +1,16 @@
+.app {
+  font-family: sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.mb-8 {
+  margin-bottom: 8px;
+}
+
+.text-center {
+  text-align: center;
+}
