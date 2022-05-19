@@ -1,4 +1,5 @@
 import { render } from "react-dom";
+import 'dotenv/config'
 
 import App from "./App";
 

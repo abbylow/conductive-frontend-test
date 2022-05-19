@@ -2,8 +2,6 @@
 import React, { useState } from "react";
 import { linkHorizontal } from "d3-shape";
 
-// TODO: simpify this part
-
 function horizontalSourceO(d) {
   const y = (d.source.y1 - d.source.y0) / 2 + d.source.y0;
   return [d.source.x1, y];
@@ -31,14 +29,10 @@ function sankeyLinkHorizontalO() {
 }
 
 // Component
-export default function Link({ link, color, maxWidth, setHoveredLinkValue }) {
-  const linkWidth = maxWidth
-    ? (link.value / link.source.value) * maxWidth
-    : link.width;
+export default function Link({ link, color, setHoveredLinkValue }) {
+  const linkWidth = link.width;
 
-  const path = maxWidth
-    ? sankeyLinkHorizontalO()(link)
-    : sankeyLinkHorizontal()(link);
+  const path = sankeyLinkHorizontal()(link);
 
   return (
     <path

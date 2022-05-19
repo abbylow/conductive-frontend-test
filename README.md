@@ -150,4 +150,4 @@ Feel free to reach out with technical and non-technical questions. Our goal is t
 
 
 # Reference
-Forked the base code from https://codesandbox.io/s/ofzjk 
+Forked the Sankey - React related code from https://codesandbox.io/s/ofzjk 

@@ -24,11 +24,6 @@ export default function Sankey({
     links: []
   });
 
-// TODO: remove
-useEffect(() => {
-  // console.log(graph)
-}, [graph])
-
   useEffect(() => {
     setGraph(
       d3sankey()

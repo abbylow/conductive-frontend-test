@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import * as d3 from "d3";
 import Papa from "papaparse";
+import axios from "axios";
 
 // Custom Components
 import { Sankey, Link, Node } from "./components/Sankey";
@@ -9,7 +10,6 @@ import { CSV_PATH, ZERO, nodes, nodeMap } from "./const";
 
 import "./App.css";
 
-// Component
 export default function App() {
   const [links, setLinks] = useState([]);
   const [hoveredLinkValue, setHoveredLinkValue] = useState('');
@@ -105,6 +105,34 @@ export default function App() {
     setLinks(parseLinks);
   }, []);
 
+  const [quiddPrice, setQuiddPrice] = useState('--');
+
+  // API Reference: https://coinmarketcap.com/api/documentation/v1/#operation/getV1CryptocurrencyQuotesLatest
+  useEffect(() => {
+    let response = null;
+    new Promise(async (resolve, reject) => {
+      try {
+        response = await axios.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=QUIDD&convert=USD', {
+          headers: {
+            'X-CMC_PRO_API_KEY': process.env.REACT_APP_CMC_API_KEY,
+          },
+        });
+      } catch (ex) {
+        response = null;
+        // error
+        console.log(ex);
+        reject(ex);
+      }
+      if (response) {
+        // success
+        const json = response.data;
+        const quiddPrice = json?.data?.QUIDD?.quote?.USD?.price?.toFixed(8) || '--';
+        setQuiddPrice(quiddPrice);
+        resolve(json);
+      }
+    });
+  }, []);
+
   // Hide the diagram before the links are in calculation
   if (links.length === 0 || nodes.length === 0) {
     return <div>loading</div>
@@ -116,16 +144,11 @@ export default function App() {
         <h3>Summary</h3>
         <p>
           Total Value QUIDD - This displays the total lifetime sum of transfer value in QUIDD tokens
-        <br />
+          <br />
           Total number of transactions - This displays the total number of transactions being displayed.
         </p>
-      </div>
-      <div className="mb-8">
-        {hoveredLinkValue && `QUIDD tokens transferred: ${hoveredLinkValue}`}
-      </div>
-      <div className="mb-8">
-        {/* TODO: convert to USD */}
-        {hoveredNodeValue && `QUIDD tokens in USD: ${hoveredNodeValue}`}
+        <p>{hoveredLinkValue && `QUIDD tokens transferred: ${hoveredLinkValue}`}</p>
+        <p>{hoveredNodeValue && `QUIDD tokens in USD: ${+hoveredNodeValue * quiddPrice}`}</p>
       </div>
 
       <Sankey
