@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/conductive-frontend-test/static/css/main.0a6d45f1.chunk.css",
+    "main.js": "/conductive-frontend-test/static/js/main.c9512e80.chunk.js",
+    "main.js.map": "/conductive-frontend-test/static/js/main.c9512e80.chunk.js.map",
+    "runtime-main.js": "/conductive-frontend-test/static/js/runtime-main.db7a33ee.js",
+    "runtime-main.js.map": "/conductive-frontend-test/static/js/runtime-main.db7a33ee.js.map",
+    "static/js/2.a08072c1.chunk.js": "/conductive-frontend-test/static/js/2.a08072c1.chunk.js",
+    "static/js/2.a08072c1.chunk.js.map": "/conductive-frontend-test/static/js/2.a08072c1.chunk.js.map",
+    "index.html": "/conductive-frontend-test/index.html",
+    "static/css/main.0a6d45f1.chunk.css.map": "/conductive-frontend-test/static/css/main.0a6d45f1.chunk.css.map",
+    "static/js/2.a08072c1.chunk.js.LICENSE.txt": "/conductive-frontend-test/static/js/2.a08072c1.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.db7a33ee.js",
+    "static/js/2.a08072c1.chunk.js",
+    "static/css/main.0a6d45f1.chunk.css",
+    "static/js/main.c9512e80.chunk.js"
+  ]
+}
